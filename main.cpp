@@ -17,6 +17,24 @@ class Goat {
                              "Cou Clair", "Sundgau" };
 
     public:
+    //CONSTRUCTOR(default) - sets random age, name, & color
+    Goat() {
+        int temp;
+        srand(time(0));
+        temp = rand() % 21;
+        age = temp;
+        temp = rand() % 16;
+        name = names[temp];
+        temp = rand() % 16;
+        color = colors[temp];
+    }
+
+    //CONSTRUCTOR(parameter) - sets age, name, & color with given values
+    Goat(int a, string n, string c) {
+        age = a;
+        name = n;
+        color = c;
+    }
 };
 
 class DoublyLinkedList {
