@@ -1,13 +1,27 @@
 // COMSC-210 | Lab 21 | Loma Kim
 #include <iostream>
-
 using namespace std;
-const int MIN_NR = 10,
-    MAX_NR = 99,
-    MIN_LS = 5,
-    MAX_LS = 20;
+
+const int MIN_NR = 10, MAX_NR = 99, MIN_LS = 5, MAX_LS = 20, SIZE = 15;
+
+class Goat {
+    private:
+    int age;
+    string name, color;
+    string names [SIZE] = { "Oreo", "Willow", "Peanut", "Bandit", "Hazel",
+                            "Clover", "Jasper", "Mochi", "Tater Tot", "Feta",
+                            "Ginger", "Grover", "Rocky", "Pip", "Sarge" };
+    string colors [SIZE] = { "Solid White", "Solid Black", "Brown", "Red",
+                             "Gold", "Cream", "Silver", "Buckskin", "Pinto",
+                             "Chamoisee", "Moon Spots", "Roan", "Blackbelly",
+                             "Cou Clair", "Sundgau" };
+
+    public:
+};
+
 class DoublyLinkedList {
-    private: struct Node {
+    private: 
+    struct Node {
         int data;
         Node * prev;
         Node * next;
@@ -19,12 +33,14 @@ class DoublyLinkedList {
     };
     Node * head;
     Node * tail;
+
     public:
-        // constructor
-        DoublyLinkedList() {
-            head = nullptr;
-            tail = nullptr;
-        }
+    // constructor
+    DoublyLinkedList() {
+        head = nullptr;
+        tail = nullptr;
+    }
+
     void push_back(int value) {
         Node * newNode = new Node(value);
         if (!tail) // if there's no tail, the list is empty
@@ -35,6 +51,7 @@ class DoublyLinkedList {
             tail = newNode;
         }
     }
+
     void push_front(int value) {
         Node * newNode = new Node(value);
         if (!head) // if there's no head, the list is empty
@@ -45,6 +62,7 @@ class DoublyLinkedList {
             head = newNode;
         }
     }
+
     void insert_after(int value, int position) {
         if (position < 0) {
             cout << "Position must be >= 0." << endl;
@@ -71,6 +89,7 @@ class DoublyLinkedList {
             tail = newNode; // Inserting at the end
         temp -> next = newNode;
     }
+
     void delete_node(int value) {
         if (!head) return; // Empty list
         Node * temp = head;
@@ -89,6 +108,7 @@ class DoublyLinkedList {
         }
         delete temp;
     }
+
     void print() {
         Node * current = head;
         if (!current) return;
@@ -98,6 +118,7 @@ class DoublyLinkedList {
         }
         cout << endl;
     }
+
     void print_reverse() {
         Node * current = tail;
         if (!current) return;
@@ -107,6 +128,7 @@ class DoublyLinkedList {
         }
         cout << endl;
     }
+
     ~DoublyLinkedList() {
         while (head) {
             Node * temp = head;
@@ -115,6 +137,7 @@ class DoublyLinkedList {
         }
     }
 };
+
 // Driver program
 int main() {
     DoublyLinkedList list;
