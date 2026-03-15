@@ -1,15 +1,13 @@
 // COMSC-210 | Lab 21 | Loma Kim
 #include <iostream>
-using namespace std;
 
+using namespace std;
 const int MIN_NR = 10,
     MAX_NR = 99,
     MIN_LS = 5,
     MAX_LS = 20;
-
 class DoublyLinkedList {
-    private: 
-    struct Node {
+    private: struct Node {
         int data;
         Node * prev;
         Node * next;
@@ -21,14 +19,12 @@ class DoublyLinkedList {
     };
     Node * head;
     Node * tail;
-
     public:
         // constructor
         DoublyLinkedList() {
             head = nullptr;
             tail = nullptr;
         }
-
     void push_back(int value) {
         Node * newNode = new Node(value);
         if (!tail) // if there's no tail, the list is empty
@@ -39,7 +35,6 @@ class DoublyLinkedList {
             tail = newNode;
         }
     }
-
     void push_front(int value) {
         Node * newNode = new Node(value);
         if (!head) // if there's no head, the list is empty
@@ -50,7 +45,6 @@ class DoublyLinkedList {
             head = newNode;
         }
     }
-
     void insert_after(int value, int position) {
         if (position < 0) {
             cout << "Position must be >= 0." << endl;
@@ -77,7 +71,6 @@ class DoublyLinkedList {
             tail = newNode; // Inserting at the end
         temp -> next = newNode;
     }
-
     void delete_node(int value) {
         if (!head) return; // Empty list
         Node * temp = head;
@@ -96,7 +89,6 @@ class DoublyLinkedList {
         }
         delete temp;
     }
-
     void print() {
         Node * current = head;
         if (!current) return;
@@ -106,7 +98,6 @@ class DoublyLinkedList {
         }
         cout << endl;
     }
-
     void print_reverse() {
         Node * current = tail;
         if (!current) return;
@@ -116,7 +107,6 @@ class DoublyLinkedList {
         }
         cout << endl;
     }
-
     ~DoublyLinkedList() {
         while (head) {
             Node * temp = head;
@@ -125,15 +115,12 @@ class DoublyLinkedList {
         }
     }
 };
-
 // Driver program
 int main() {
     DoublyLinkedList list;
     int size = rand() % (MAX_LS - MIN_LS + 1) + MIN_LS;
-
     for (int i = 0; i < size; ++i)
         list.push_back(rand() % (MAX_NR - MIN_NR + 1) + MIN_NR);
-    
     cout << "List forward: ";
     list.print();
     cout << "List backward: ";
@@ -142,6 +129,5 @@ int main() {
     list.~DoublyLinkedList();
     cout << "List forward: ";
     list.print();
-    
     return 0;
 }
