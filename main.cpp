@@ -34,6 +34,10 @@ class Goat {
         name = n;
         color = c;
     }
+
+    void printGoat() const {
+        cout << name << " (" << color << ", " << age << ")";
+    }
 };
 
 class DoublyLinkedList {
@@ -65,7 +69,7 @@ class DoublyLinkedList {
             head = tail = newNode;
         else {
             tail -> next = newNode;
-            newNode -> prev = tail;
+            newNode->prev = tail;
             tail = newNode;
         }
     }
@@ -137,12 +141,12 @@ class DoublyLinkedList {
 
     void print() {
         Node * current = head;
-        if (!current) return;
+        if (!current) 
+            cout << "List is empty!";
 
         while (current) {
-            cout << "Name: " << current->goat.name << endl;
-            cout << "Age: " << current->goat.age << endl;
-            cout << "Color: " << current->goat.color << endl << endl;
+            current->goat.printGoat();
+            cout << endl;
             current = current -> next;
         }
         cout << endl;
@@ -150,9 +154,12 @@ class DoublyLinkedList {
 
     void print_reverse() {
         Node * current = tail;
-        if (!current) return;
+        if (!current) 
+            cout << "List is empty!";
+
         while (current) {
-            cout << current->data << " ";
+            current->goat.printGoat();
+            cout << endl;
             current = current -> prev;
         }
         cout << endl;
@@ -178,13 +185,14 @@ int main() {
         delete newGoat;
     }
 
-    cout << "List forward: ";
+    cout << "List forward: " << endl;
     list.print();
-    cout << "List backward: ";
+    cout << "List backward: " << endl;
     list.print_reverse();
     cout << "Deleting list, then trying to print.\n";
     list.~DoublyLinkedList();
     cout << "List forward: ";
     list.print();
+
     return 0;
 }
