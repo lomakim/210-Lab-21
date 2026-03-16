@@ -20,7 +20,6 @@ class Goat {
     //CONSTRUCTOR(default) - sets random age, name, & color
     Goat() {
         int temp;
-        srand(time(0));
         temp = rand() % 21;
         age = temp;
         temp = rand() % 16;
@@ -139,8 +138,11 @@ class DoublyLinkedList {
     void print() {
         Node * current = head;
         if (!current) return;
+
         while (current) {
-            cout << current -> data << " ";
+            cout << "Name: " << current->goat.name << endl;
+            cout << "Age: " << current->goat.age << endl;
+            cout << "Color: " << current->goat.color << endl << endl;
             current = current -> next;
         }
         cout << endl;
@@ -167,10 +169,14 @@ class DoublyLinkedList {
 
 // Driver program
 int main() {
+    srand(time(0));
     DoublyLinkedList list;
     int size = rand() % (MAX_LS - MIN_LS + 1) + MIN_LS;
-    for (int i = 0; i < size; ++i)
-        list.push_back(rand() % (MAX_NR - MIN_NR + 1) + MIN_NR);
+    for (int i = 0; i < size; ++i) {
+        Goat* newGoat = new Goat;
+        list.push_back(*newGoat);
+        delete newGoat;
+    }
 
     cout << "List forward: ";
     list.print();
